@@ -2,8 +2,7 @@ import logging
 import os
 import requests
 import csv
-
-
+import zipfile
 class DataExtraction:
 
     def __init__(self):
@@ -12,9 +11,11 @@ class DataExtraction:
     def run(self):
         logging.info(f"Running data extraction.")
         csv_data_dir = os.getenv("DATA_DIR", "data")
+        zipfile_name = os.getenv("ZIP_FILE_NAME", "stock_data.zip")
         self.__create_data_directory(csv_data_dir)
         self.temp()
         self.get_csv_from_url()
+        self.unzip_file(f"{csv_data_dir}/{zipfile_name}", f"{csv_data_dir}")
 
     def temp(self):
         logging.info(f"Current directory : {os.getcwd()}")
@@ -45,6 +46,14 @@ class DataExtraction:
                             if chunks_written%10000==0:
                                 logging.info(f"Written chunk : {chunks_written}")
 
+    def unzip_file(self, file_path, extract_path):
+        expected_files = os.getenv("EXPECTED_FILES", "etfs,stocks,symbols_valid_meta.csv")
+        if all(file in os.listdir(extract_path) for file in expected_files.split(',')):
+            logging.info(f"Files have been extracted. Skipping extraction.")
+        else:
+            with zipfile.ZipFile(file_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_path)
+            logging.info('File successfully unzipped.')
     def __create_data_directory(self, directory_name):
         """
         Create directory to store zip files.
@@ -56,3 +65,4 @@ class DataExtraction:
             logging.info(f"Created directory {directory_name} for zip files.")
         else:
             logging.info(f"{directory_name}, already exists.")
+
