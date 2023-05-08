@@ -5,14 +5,14 @@ import logging
 
 class Transform:
 
-    def __init__(self, data_types):
+    def __init__(self, data_types={}):
         self.meta_data = None
         self.data_types = data_types
         self.data_dir = os.getenv("DATA_DIR", "data")
         self.meta_data_csv = os.getenv("META_DATA_CSV", "symbols_valid_meta.csv")
         self.stock_data_dir = os.getenv("STOCK_DATA_DIR", "/stocks")
         self.etf_data_dir = os.getenv("ETF_DATA_DIR", "/etfs")
-        self.load_meta_data()
+        # self.load_meta_data()
         self.is_parq_direct_created = False
         self.parq_stock_file_names = set()
         self.parq_etf_file_names = set()
@@ -26,20 +26,19 @@ class Transform:
 
     def run(self):
         logging.info(f"Processing stock files.")
+        self.load_meta_data()
         for filename in self.get_file_names(f"{self.data_dir}/{self.stock_data_dir}", 'stock'):
             logging.info(f"Processing file : {filename}.")
-            self.load_stocks(f"{self.data_dir}/stocks/{filename}")
+            self.__load_stocks(f"{self.data_dir}/stocks/{filename}")
         logging.info(f"Processing etf files.")
-        etf_file_count = 0
         for filename in self.get_file_names(f"{self.data_dir}/{self.etf_data_dir}", 'etf'):
             logging.info(f"Processing file : {filename}.")
-            self.load_stocks(f"{self.data_dir}/etfs/{filename}", 'etf')
-            etf_file_count += 1
+            self.__load_stocks(f"{self.data_dir}/etfs/{filename}", 'etf')
 
     def get_file_names(self, dir, typ):
         if not self.is_parq_direct_created:
-            self.__create_sub_directory(f"{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}")
-            self.__create_sub_directory(f"{self.data_dir}/{self.parquet_files_dir}/{self.etf_data_dir}")
+            self.create_sub_directory(f"{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}")
+            self.create_sub_directory(f"{self.data_dir}/{self.parquet_files_dir}/{self.etf_data_dir}")
             self.is_parq_direct_created = True
         self.get_parq_file_names(typ)
         if typ == 'stock':
@@ -55,21 +54,27 @@ class Transform:
             # else:
             #    logging.info(f"{stockfile.split('.')[0]}  has already been converted to a parquet file.")
 
-    def get_parq_file_names(self, typ='stock'):
+    def get_parq_file_names(self, typ='stock', level='transform', feature_eng_dir=None):
+        if level =='transfom':
+            existing_stock_dir = f'{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}'
+            existing_etf_dir = f'{self.data_dir}/{self.parquet_files_dir}/{self.etf_data_dir}'
+        elif level =='feature_eng':
+            existing_stock_dir = f'{self.data_dir}/{self.parquet_files_dir}/{feature_eng_dir}/{self.stock_data_dir}'
+            existing_etf_dir = f'{self.data_dir}/{self.parquet_files_dir}/{feature_eng_dir}/{self.etf_data_dir}'
         if typ == 'stock':
-            for parq_file in os.listdir(f'{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}'):
+            for parq_file in os.listdir(existing_stock_dir):
                 self.parq_stock_file_names.add(parq_file.split('.')[0])
         elif typ == 'etf':
-            for parq_file in os.listdir(f'{self.data_dir}/{self.parquet_files_dir}/{self.etf_data_dir}'):
+            for parq_file in os.listdir(existing_etf_dir):
                 self.parq_etf_file_names.add(parq_file.split('.')[0])
 
-    def load_stocks(self, stock_file, typ='stock'):
+    def __load_stocks(self, stock_file, typ='stock'):
         logging.info(f"Loading {stock_file}")
         stocksymb = self.get_stock_etf_symbol(stock_file)
         df = pd.read_csv(f'{stock_file}', dtype=self.data_types)
         stocksymb = stocksymb.split('/')[-1]
         logging.info(f"Loaded dataframe with shape {df.shape[0]}, {df.shape[1]} for stock/etf symbol : {stocksymb}")
-        df = self.add_stock_etf_symbol(df, stocksymb)
+        df = self.__add_stock_etf_symbol(df, stocksymb)
         merged_df = df.join(self.meta_data.set_index('Symbol'), on='Symbol', how='left')
         logging.info(f"Merged df shape : {merged_df.shape[0]}, {merged_df.shape[1]}")
         if typ == 'stock':
@@ -85,7 +90,7 @@ class Transform:
         except Exception as err:
             logging.error(f"{err} getting stockname.")
 
-    def add_stock_etf_symbol(self, df, stocksymb):
+    def __add_stock_etf_symbol(self, df, stocksymb):
         try:
             df['Symbol'] = stocksymb
             return df
@@ -93,7 +98,7 @@ class Transform:
             logging.error(f"Failed to add stock symbol.")
             return df
 
-    def __create_sub_directory(self, directory_path):
+    def create_sub_directory(self, directory_path):
         """
 
         """

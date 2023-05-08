@@ -43,3 +43,15 @@ with DAG(default_args=default_args, dag_id='convert_to_parq',
     )
 
     convert_to_parq
+
+with DAG(default_args=default_args, dag_id='feature_eng',
+         start_date=datetime(2023, 5, 5), schedule_interval='@daily', catchup=False
+         ) as dag:
+    from feature_eng.feature_eng import FeatureEng
+    feature_eng = FeatureEng()
+    feature_eng = PythonOperator(
+        task_id='feature_eng',
+        python_callable = feature_eng.run
+    )
+
+    feature_eng
