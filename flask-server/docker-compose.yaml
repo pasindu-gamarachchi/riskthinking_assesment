@@ -1,0 +1,9 @@
+services:
+  model-server-app:
+    build: .
+    environment:
+      MODEL_PATH: model_server/static/A.pkl
+    ports:
+      - 5000:5000
+    #volumes:
+    #  - ./saved_models:/model_server/static

@@ -19,8 +19,41 @@ with DAG(default_args=default_args, dag_id='e2e_pipeline',
         task_id='get_file',
         python_callable = dataExtraction.run
     )
+    from transform.transform import Transform
 
-    data_extraction
+    data_types = {
+        'Symbol': str,
+        'Date': str,
+        'Open': float,
+        'High': float,
+        'Low': float,
+        'Close': float,
+        'Adj Close': float,
+        'Volume': float
+    }
+    transform = Transform(data_types)
+    convert_to_parq = PythonOperator(
+        task_id='to_parquet',
+        python_callable=transform.run
+    )
+
+    from feature_eng.feature_eng import FeatureEng
+
+    feature_eng = FeatureEng()
+    feature_eng = PythonOperator(
+        task_id='feature_eng',
+        python_callable=feature_eng.run
+    )
+
+    from ml_model.ml_model import MLmodel
+
+    ml_model_train = MLmodel()
+    ml_train = PythonOperator(
+        task_id='ml_train',
+        python_callable=ml_model_train.run
+    )
+
+    data_extraction >> convert_to_parq >> feature_eng >> ml_train
 
 with DAG(default_args=default_args, dag_id='convert_to_parq',
          start_date=datetime(2023, 5, 5), schedule_interval='@daily', catchup=False
@@ -55,3 +88,15 @@ with DAG(default_args=default_args, dag_id='feature_eng',
     )
 
     feature_eng
+
+with DAG(default_args=default_args, dag_id='ml_train',
+         start_date=datetime(2023, 5, 5), schedule_interval='@daily', catchup=False
+         ) as dag:
+    from ml_model.ml_model import MLmodel
+    ml_model_train = MLmodel()
+    ml_train = PythonOperator(
+        task_id='ml_train',
+        python_callable = ml_model_train.run
+    )
+
+    ml_train

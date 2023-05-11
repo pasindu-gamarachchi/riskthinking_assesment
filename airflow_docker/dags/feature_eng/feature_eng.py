@@ -11,7 +11,6 @@ class FeatureEng(Transform):
         self.feature_eng_dir = 'feature_eng'
     def run(self):
         logging.info(f"Running Feature Engineering.")
-        self.get_file_names('', '')
         for filename in self.get_file_names(f"{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}", 'stock'):
             logging.info(f"Processing file : {filename}.")
             # self.__load_stocks(f"{self.data_dir}/stocks/{filename}")

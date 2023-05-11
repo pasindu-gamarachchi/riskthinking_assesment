@@ -17,6 +17,10 @@ class Transform:
         self.parq_stock_file_names = set()
         self.parq_etf_file_names = set()
         self.parquet_files_dir = os.getenv("PARQ_DIR", "parquet_files")
+        self.ml_models_dir = 'models'
+        self.feature_eng_dir = 'feature_eng'
+        self.existing_ml_models_stock = set()
+        self.existing_ml_models_etf = set()
 
     def load_meta_data(self):
         try:
@@ -25,12 +29,12 @@ class Transform:
             logging.error(f"Failed to load metadata with {err}.")
 
     def run(self):
-        logging.info(f"Processing stock files.")
+        logging.info("Processing stock files.")
         self.load_meta_data()
         for filename in self.get_file_names(f"{self.data_dir}/{self.stock_data_dir}", 'stock'):
             logging.info(f"Processing file : {filename}.")
             self.__load_stocks(f"{self.data_dir}/stocks/{filename}")
-        logging.info(f"Processing etf files.")
+        logging.info("Processing etf files.")
         for filename in self.get_file_names(f"{self.data_dir}/{self.etf_data_dir}", 'etf'):
             logging.info(f"Processing file : {filename}.")
             self.__load_stocks(f"{self.data_dir}/etfs/{filename}", 'etf')
@@ -55,18 +59,30 @@ class Transform:
             #    logging.info(f"{stockfile.split('.')[0]}  has already been converted to a parquet file.")
 
     def get_parq_file_names(self, typ='stock', level='transform', feature_eng_dir=None):
-        if level =='transfom':
+        logging.info(f"Received level : {level}")
+        if level =='transform':
             existing_stock_dir = f'{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}'
             existing_etf_dir = f'{self.data_dir}/{self.parquet_files_dir}/{self.etf_data_dir}'
         elif level =='feature_eng':
             existing_stock_dir = f'{self.data_dir}/{self.parquet_files_dir}/{feature_eng_dir}/{self.stock_data_dir}'
             existing_etf_dir = f'{self.data_dir}/{self.parquet_files_dir}/{feature_eng_dir}/{self.etf_data_dir}'
+        elif level == 'ml_models':
+            existing_stock_dir = f'{self.data_dir}/{self.ml_models_dir}/{self.stock_data_dir}'
+            existing_etf_dir = f'{self.data_dir}/{self.ml_models_dir}/{self.etf_data_dir}'
         if typ == 'stock':
-            for parq_file in os.listdir(existing_stock_dir):
-                self.parq_stock_file_names.add(parq_file.split('.')[0])
+            if level == 'ml_models':
+                for ml_model in os.listdir(existing_stock_dir):
+                    self.existing_ml_models_stock.add(ml_model.split('.')[0])
+            else:
+                for parq_file in os.listdir(existing_stock_dir):
+                    self.parq_stock_file_names.add(parq_file.split('.')[0])
         elif typ == 'etf':
-            for parq_file in os.listdir(existing_etf_dir):
-                self.parq_etf_file_names.add(parq_file.split('.')[0])
+            if level == 'ml_models':
+                for ml_model in os.listdir(existing_stock_dir):
+                    self.existing_ml_models_etf.add(ml_model.split('.')[0])
+            else:
+                for parq_file in os.listdir(existing_etf_dir):
+                    self.parq_etf_file_names.add(parq_file.split('.')[0])
 
     def __load_stocks(self, stock_file, typ='stock'):
         logging.info(f"Loading {stock_file}")
@@ -110,12 +126,22 @@ class Transform:
 
     def __create_data_directory(self, directory_name):
         """
-        Create directory to store zip files.
+        Create directory.
         :param directory_name:
         :return:
         """
-        if not os.path.exists(directory_name):
-            os.makedirs(directory_name)
-            logging.info(f"Created directory {directory_name}.")
-        else:
-            logging.info(f"{directory_name}, already exists.")
+        try:
+            if not os.path.exists(directory_name):
+                os.makedirs(directory_name)
+                logging.info(f"Created directory {directory_name}.")
+            else:
+                logging.info(f"{directory_name}, already exists.")
+        except PermissionError as err:
+            logging.error(f"{err} creating directory.")
+            try:
+                init_mask = os.umask(0)
+                os.makedirs(directory_name, 0o77)
+            #except Exception as err:
+                #logging.warning(f"Failed to create directory after updating permission.")
+            finally:
+                os.umask(init_mask)
