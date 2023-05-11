@@ -34,11 +34,12 @@ class Transform:
         for filename in self.get_file_names(f"{self.data_dir}/{self.stock_data_dir}", 'stock'):
             logging.info(f"Processing file : {filename}.")
             self.__load_stocks(f"{self.data_dir}/stocks/{filename}")
+            break
         logging.info("Processing etf files.")
         for filename in self.get_file_names(f"{self.data_dir}/{self.etf_data_dir}", 'etf'):
             logging.info(f"Processing file : {filename}.")
             self.__load_stocks(f"{self.data_dir}/etfs/{filename}", 'etf')
-
+            break
     def get_file_names(self, dir, typ):
         if not self.is_parq_direct_created:
             self.create_sub_directory(f"{self.data_dir}/{self.parquet_files_dir}/{self.stock_data_dir}")
