@@ -1,5 +1,5 @@
 from model_server import app
-from flask import request
+from flask import request, jsonify
 import logging
 from model_server.ml_model.ml_model import MLModel
 from model_server.input_validator.input_validator import InputValidator
@@ -30,7 +30,10 @@ def predict():
     if not is_valid:
         return {"error": err_msg}, stat_code
     pred_volume = xgb_model.predict(vol_mov_avg, adj_close_rolling_med)
-    return {"Predicted Volume": pred_volume}, 200
+    return jsonify({
+        "Predicted Volume": pred_volume,
+        "Stock Symbol": "A",
+        "Security Name": "Agilent Technologies, Inc."}), 200
 
 @app.route("/test")
 def test():
