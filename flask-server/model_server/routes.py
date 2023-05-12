@@ -35,6 +35,10 @@ def predict():
         "Stock Symbol": "A",
         "Security Name": "Agilent Technologies, Inc."}), 200
 
+@app.route("/")
+def home():
+    return {"message" : "Hello, use the /predict endpoint for a prediction."}
+
 @app.route("/test")
 def test():
     return {"message": "Ok"}, 200
