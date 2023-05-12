@@ -3,57 +3,125 @@ import os
 import requests
 import csv
 import zipfile
-class DataExtraction:
+from datetime import datetime, timedelta
 
-    def __init__(self):
-        pass
+
+class DataExtraction:
+    """
+    A class for performing data extraction operations.
+
+    Methods:
+    - run(): Runs the data extraction process.
+    - get_timestamp(): Retrieves the current timestamp in a formatted string.
+    - get_csv_from_url(): Retrieves a CSV file from a specified URL and saves it locally.
+    - unzip_file(file_path, extract_path): Unzips a specified ZIP file to the specified extraction path.
+    - __create_data_directory(directory_name): Creates a directory to store ZIP files.
+
+    Note:
+    - The class assumes the presence of required libraries such as `os`, `datetime`, `logging`, `zipfile`, and `requests`.
+    - Environment variables are used to configure various parameters, such as data directory, ZIP file name, and CSV file URL.
+    """
 
     def run(self):
-        logging.info(f"Running data extraction.")
+        """
+        Runs the data extraction process.
+
+        This function performs the following steps:
+        1. Retrieves the data directory path from the environment variable "DATA_DIR". If not found, uses the default value "data".
+        2. Retrieves the ZIP file name from the environment variable "ZIP_FILE_NAME". If not found, uses the default value "stock_data.zip".
+        3. Creates the data directory if it does not exist.
+        4. Retrieves the CSV file from a URL.
+        5. Unzips the downloaded ZIP file and extracts its contents to the data directory.
+
+        Note:
+        - The CSV file will be downloaded from a URL specified in the implementation of `get_csv_from_url` method.
+        - The ZIP file will be extracted to the data directory specified in the environment variable "DATA_DIR" or the default value.
+
+        """
+        logging.info("Running data extraction.")
         csv_data_dir = os.getenv("DATA_DIR", "data")
         zipfile_name = os.getenv("ZIP_FILE_NAME", "stock_data.zip")
         self.__create_data_directory(csv_data_dir)
-        self.temp()
         self.get_csv_from_url()
         self.unzip_file(f"{csv_data_dir}/{zipfile_name}", f"{csv_data_dir}")
 
-    def temp(self):
-        logging.info(f"Current directory : {os.getcwd()}")
-        logging.info(f"List Directory : {os.listdir()}")
-        resp = requests.get('https://www.google.com/')
-        logging.info(f"Status code for google.com : {resp.status_code}")
+    def get_timestamp(self):
+        """
+        Retrieves the current timestamp in a formatted string.
+
+        Returns:
+        - A formatted timestamp string in the format "YYYYMMDDTHHMMSSZ".
+
+        Example:
+        - "20230511T153045Z"
+
+        """
+        current_time = datetime.utcnow()
+        formatted_time = current_time.strftime("%Y%m%dT%H%M%SZ")
+        return formatted_time
 
     def get_csv_from_url(self):
-        logging.info(f"get csv from url called")
+        """
+        Retrieves a CSV file from a specified URL and saves it locally.
+
+        Important Steps:
+        1. Retrieve data directory path, ZIP file name, and output file path from environment variables.
+        2. Skip download if ZIP file already exists in the data directory.
+        3. Initiate the download of the CSV file from the URL.
+        4. Write the downloaded file to the output file path.
+
+        Note:
+        - The CSV file is downloaded from a specified URL.
+        - Data directory, ZIP file name, and output file path can be configured using environment variables.
+        - The output file will be overwritten if it already exists.
+        """
+        logging.info("get csv from url called")
         csv_data_dir = os.getenv("DATA_DIR", "data")
         zipfile_name = os.getenv("ZIP_FILE_NAME", "stock_data.zip")
         output_file = os.getenv("OUTPUT_FILE_PATH", f"{csv_data_dir}/{zipfile_name}")
-        CSV_URL = 'https://storage.googleapis.com/kaggle-data-sets/541298/1054465/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com@kaggle-161607.iam.gserviceaccount.com/20230505/auto/storage/goog4_request&X-Goog-Date=20230505T200133Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=74b3d7b85d780828d0fa2a2c5f9da96b72394d28ae517782a5806ffc8c45eb28ce5e5089ecbd4433c363ffad32db26c026febf3f2898a51786b0971d8025c0ccdc49993d37a06bb7b592f30de76ba077d2cc501ab47c6389149da4ed3ecc354e623b89a73aac17cbb3c0a1446f7fc10899858a136a9734c82dbe87df8ac28790afaf461379c8846c0450e94c3e42072c13da513cd40acbb4834ce0bbbef124eb6a306ada6a2f82b00e6e32ee164eed8c2775110fa89cb3f6161aed6f1661109eab636bcdb595814108dfe199762a7a741d0e151bf620b0b1c44dfdff0e151e637c131fb0f160c9b978aa201f0fac3d5007fe685fcfb744397335924eaf3829d1'
-        download_file = False
+        time_stamp = self.get_timestamp()
+        CSV_URL = f'https://storage.googleapis.com/kaggle-data-sets/541298/1054465/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20230511%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date={time_stamp}&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=2118dfd23e6c04b7b072234588133a99f26872cca976f55d98d6973d5a08bd615040c02dddb490d8a722481cebe0ad029869a58fff941c47d5e2f7501c65577aca6690cd4e3e77d591b78008422cd07d357429a83a57e8967efbc6e58169e6c610c064504e70438599c842909c61901ea989a6b5e6b6542a5d4c8c2716fe375e4b112a891a534f44f4af8d2df3d9b519847bb34a37776e5e36bf0cccaec620ae3a01ee2910d1fa2d1c05122024d3d733fd48e9d9def00104f52faa6402ea530027eb88495538aab424927a3a76fbd919cf7f9451d58844ea7cbcf67b7174e013575191e0f475986e4d57544792eec169c0f20ac27353febb6ad1bd6ffa0b274e'
+        CSV_URL = f"https://storage.googleapis.com/kaggle-data-sets/541298/1054465/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20230512%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20230512T151129Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=aab8186bd8441d440179998004d4c56d3a790a43151327c0c3e46ef3efc802bb26627f7f85d796b4b5e8244433d4b0b339ed938f942d02637bb2ff7f4dd9fc0068342b39d6dac48d20bb0d56717dd143f8872308ac1a07e5bad43a923d9f0bc072fcbb0d5c0a7e91d2f71e9b271e765dea70f1c14d58d3ab9ff28d697b6e89ce0bd4e92e4b5d847aa15da4716b4a18ee2d70ad0e9880ffe93b154b31c0eeb18eac69ea383ed60f2ee08b6029607d16ad4887949600af5f70d6c592dd721de33491b3fc2535c8b5ce39097bef59aaf865e5dcc4888e1d101c1091303f9810e78fa1e26c71cc299c09ec3a1ba0702512af3f51dd9d2d118245595515f2de0a9d27"
         if zipfile_name in os.listdir(csv_data_dir):
-            logging.info(f"File has already been downloaded, skipping download.")
+            logging.info("File has already been downloaded, skipping download.")
         else:
-            logging.info(f"File download initiated.")
-            if download_file:
-                csv_file = requests.get(CSV_URL)
-                logging.info(f"Resp code : {csv_file.status_code}")
-                with open(output_file, "wb") as f:
-                    chunks_written = 0
-                    for chunk in csv_file.iter_content(chunk_size=512):
-                        if chunk:
-                            f.write(chunk)
-                            chunks_written += 1
-                            if chunks_written%10000==0:
-                                logging.info(f"Written chunk : {chunks_written}")
+            logging.info("File download initiated.")
+            logging.info(f"With csv url :\n\t {CSV_URL}")
+            csv_file = requests.get(CSV_URL)
+            logging.info(f"Resp code : {csv_file.status_code}")
+            with open(output_file, "wb") as f:
+                chunks_written = 0
+                for chunk in csv_file.iter_content(chunk_size=512):
+                    if chunk:
+                        f.write(chunk)
+                        chunks_written += 1
+                        if chunks_written % 10000 == 0:
+                            logging.info(f"Written chunk : {chunks_written}")
 
     def unzip_file(self, file_path, extract_path):
+        """
+        Unzips a specified ZIP file to the specified extraction path.
+
+        Args:
+        - file_path (str): The path to the ZIP file to be extracted.
+        - extract_path (str): The path where the contents of the ZIP file will be extracted to.
+
+        The function checks if the expected files are already present in the extraction path. If all the expected files are found, the extraction process is skipped. Otherwise, the function extracts the contents of the ZIP file to the extraction path and logs a message indicating successful extraction.
+
+        Note:
+        - The expected files are checked based on their names (case-sensitive) within the extraction path.
+        - If any of the expected files are missing, the function will extract all contents of the ZIP file.
+        - The function assumes that the ZIP file exists and is accessible.
+
+        """
         expected_files = os.getenv("EXPECTED_FILES", "etfs,stocks,symbols_valid_meta.csv")
         if all(file in os.listdir(extract_path) for file in expected_files.split(',')):
-            logging.info(f"Files have been extracted. Skipping extraction.")
+            logging.info("Files have been extracted. Skipping extraction.")
         else:
             with zipfile.ZipFile(file_path, 'r') as zip_ref:
                 zip_ref.extractall(extract_path)
             logging.info('File successfully unzipped.')
+
     def __create_data_directory(self, directory_name):
         """
         Create directory to store zip files.
@@ -65,4 +133,3 @@ class DataExtraction:
             logging.info(f"Created directory {directory_name} for zip files.")
         else:
             logging.info(f"{directory_name}, already exists.")
-

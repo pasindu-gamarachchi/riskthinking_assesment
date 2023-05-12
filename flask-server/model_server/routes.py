@@ -3,8 +3,24 @@ from flask import request
 import logging
 from model_server.ml_model.ml_model import MLModel
 from model_server.input_validator.input_validator import InputValidator
+
+
 @app.route("/predict")
 def predict():
+    """
+    Predict route for making predictions based on input parameters.
+
+    Query Parameters:
+        - vol_mov_avg: The value of vol_moving_avg parameter.
+        - adj_close_rolling_med: The value of adj_close_rolling_med parameter.
+
+    Returns:
+        - If the input is valid:
+            - A JSON response with the predicted volume: {"Predicted Volume": pred_volume}
+        - If the input is invalid:
+            - An error message with the corresponding status code: {"error": err_msg}
+
+    """
     logging.info("Prediction in progress.")
     vol_mov_avg = request.args.get('vol_moving_avg')
     adj_close_rolling_med = request.args.get('adj_close_rolling_med')

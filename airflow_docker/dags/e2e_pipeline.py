@@ -12,6 +12,21 @@ default_args = {
 with DAG(default_args=default_args, dag_id='e2e_pipeline',
          start_date=datetime(2023, 5, 5), schedule_interval='@daily'
          ) as dag:
+    """
+    This DAG defines a series of tasks that extract, transform, and train machine learning models on data. The pipeline is scheduled to run daily.
+
+    Tasks:
+        - data_extraction: Extracts data using the DataExtraction class.
+        - convert_to_parq: Converts extracted data to Parquet format using the Transform class.
+        - feature_eng: Performs feature engineering on the transformed data using the FeatureEng class.
+        - ml_train: Trains machine learning models on the feature-engineered data using the MLmodel class.
+    
+    Dependencies:
+        - data_extraction depends on nothing.
+        - convert_to_parq depends on data_extraction.
+        - feature_eng depends on convert_to_parq.
+        - ml_train depends on feature_eng.
+    """
     from extraction.data_extraction import DataExtraction
 
     dataExtraction = DataExtraction()
