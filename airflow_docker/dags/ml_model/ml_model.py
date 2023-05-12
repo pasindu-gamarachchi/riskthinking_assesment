@@ -100,8 +100,11 @@ class MLmodel(Transform):
         logging.info(f"df shape : {df.shape[0]}, {df.shape[1]}")
         train_ind_cutoff = int(df.shape[0] * 0.8)
         df.sort_values(by=['Date'], inplace=True)
+        logging.info("Split data into train and test sets.")
+        ##TODO : Cross validation
         train = df.loc[df.index < train_ind_cutoff]
         test = df.loc[df.index >= train_ind_cutoff]
+        logging.info("Training XGBoost model")
         reg_model = xgb.XGBRegressor(n_estimators=1000, early_stopping_rounds=100)
         x_train, y_train = train[self.__FEATURES], train[self.__TARGET]
         x_test, y_test = test[self.__FEATURES], test[self.__TARGET]

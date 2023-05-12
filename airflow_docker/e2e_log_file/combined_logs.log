@@ -1,0 +1,468 @@
+
+
+					Data Extraction Task logs
+
+
+[2023-05-12T16:02:07.848+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e2e_pipeline.get_file manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:02:07.907+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e2e_pipeline.get_file manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:02:07.907+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2023-05-12T16:02:07.989+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): get_file> on 2023-05-12 16:01:55.297851+00:00
+[2023-05-12T16:02:08.001+0000] {standard_task_runner.py:57} INFO - Started process 109 to run task
+[2023-05-12T16:02:08.008+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'e2e_pipeline', 'get_file', 'manual__2023-05-12T16:01:55.297851+00:00', '--job-id', '916', '--raw', '--subdir', 'DAGS_FOLDER/e2e_pipeline.py', '--cfg-path', '/tmp/tmpih1cyq8g']
+[2023-05-12T16:02:08.012+0000] {standard_task_runner.py:85} INFO - Job 916: Subtask get_file
+[2023-05-12T16:02:08.132+0000] {task_command.py:410} INFO - Running <TaskInstance: e2e_pipeline.get_file manual__2023-05-12T16:01:55.297851+00:00 [running]> on host deb0f92a226d
+[2023-05-12T16:02:08.714+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='pas' AIRFLOW_CTX_DAG_ID='e2e_pipeline' AIRFLOW_CTX_TASK_ID='get_file' AIRFLOW_CTX_EXECUTION_DATE='2023-05-12T16:01:55.297851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-12T16:01:55.297851+00:00'
+[2023-05-12T16:02:08.717+0000] {data_extraction.py:41} INFO - Running data extraction.
+[2023-05-12T16:02:08.718+0000] {data_extraction.py:135} INFO - data, already exists.
+[2023-05-12T16:02:08.718+0000] {data_extraction.py:78} INFO - get csv from url called
+[2023-05-12T16:02:08.719+0000] {data_extraction.py:88} INFO - File download initiated.
+[2023-05-12T16:02:08.719+0000] {data_extraction.py:89} INFO - With csv url :
+	 https://storage.googleapis.com/kaggle-data-sets/541298/1054465/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20230512%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20230512T151129Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=aab8186bd8441d440179998004d4c56d3a790a43151327c0c3e46ef3efc802bb26627f7f85d796b4b5e8244433d4b0b339ed938f942d02637bb2ff7f4dd9fc0068342b39d6dac48d20bb0d56717dd143f8872308ac1a07e5bad43a923d9f0bc072fcbb0d5c0a7e91d2f71e9b271e765dea70f1c14d58d3ab9ff28d697b6e89ce0bd4e92e4b5d847aa15da4716b4a18ee2d70ad0e9880ffe93b154b31c0eeb18eac69ea383ed60f2ee08b6029607d16ad4887949600af5f70d6c592dd721de33491b3fc2535c8b5ce39097bef59aaf865e5dcc4888e1d101c1091303f9810e78fa1e26c71cc299c09ec3a1ba0702512af3f51dd9d2d118245595515f2de0a9d27
+[2023-05-12T16:04:31.265+0000] {data_extraction.py:91} INFO - Resp code : 200
+[2023-05-12T16:04:34.038+0000] {data_extraction.py:99} INFO - Written chunk : 10000
+[2023-05-12T16:04:34.057+0000] {data_extraction.py:99} INFO - Written chunk : 20000
+[2023-05-12T16:04:34.077+0000] {data_extraction.py:99} INFO - Written chunk : 30000
+[2023-05-12T16:04:34.096+0000] {data_extraction.py:99} INFO - Written chunk : 40000
+[2023-05-12T16:04:34.116+0000] {data_extraction.py:99} INFO - Written chunk : 50000
+[2023-05-12T16:04:34.135+0000] {data_extraction.py:99} INFO - Written chunk : 60000
+[2023-05-12T16:04:34.155+0000] {data_extraction.py:99} INFO - Written chunk : 70000
+[2023-05-12T16:04:34.174+0000] {data_extraction.py:99} INFO - Written chunk : 80000
+[2023-05-12T16:04:34.193+0000] {data_extraction.py:99} INFO - Written chunk : 90000
+[2023-05-12T16:04:34.213+0000] {data_extraction.py:99} INFO - Written chunk : 100000
+[2023-05-12T16:04:34.232+0000] {data_extraction.py:99} INFO - Written chunk : 110000
+[2023-05-12T16:04:34.252+0000] {data_extraction.py:99} INFO - Written chunk : 120000
+[2023-05-12T16:04:34.272+0000] {data_extraction.py:99} INFO - Written chunk : 130000
+[2023-05-12T16:04:34.292+0000] {data_extraction.py:99} INFO - Written chunk : 140000
+[2023-05-12T16:04:34.312+0000] {data_extraction.py:99} INFO - Written chunk : 150000
+[2023-05-12T16:04:34.331+0000] {data_extraction.py:99} INFO - Written chunk : 160000
+[2023-05-12T16:04:34.350+0000] {data_extraction.py:99} INFO - Written chunk : 170000
+[2023-05-12T16:04:34.369+0000] {data_extraction.py:99} INFO - Written chunk : 180000
+[2023-05-12T16:04:34.388+0000] {data_extraction.py:99} INFO - Written chunk : 190000
+[2023-05-12T16:04:34.408+0000] {data_extraction.py:99} INFO - Written chunk : 200000
+[2023-05-12T16:04:34.427+0000] {data_extraction.py:99} INFO - Written chunk : 210000
+[2023-05-12T16:04:34.446+0000] {data_extraction.py:99} INFO - Written chunk : 220000
+[2023-05-12T16:04:34.465+0000] {data_extraction.py:99} INFO - Written chunk : 230000
+[2023-05-12T16:04:34.487+0000] {data_extraction.py:99} INFO - Written chunk : 240000
+[2023-05-12T16:04:34.546+0000] {data_extraction.py:99} INFO - Written chunk : 250000
+[2023-05-12T16:04:34.565+0000] {data_extraction.py:99} INFO - Written chunk : 260000
+[2023-05-12T16:04:34.593+0000] {data_extraction.py:99} INFO - Written chunk : 270000
+[2023-05-12T16:04:34.631+0000] {data_extraction.py:99} INFO - Written chunk : 280000
+[2023-05-12T16:04:34.675+0000] {data_extraction.py:99} INFO - Written chunk : 290000
+[2023-05-12T16:04:34.708+0000] {data_extraction.py:99} INFO - Written chunk : 300000
+[2023-05-12T16:04:34.751+0000] {data_extraction.py:99} INFO - Written chunk : 310000
+[2023-05-12T16:04:34.785+0000] {data_extraction.py:99} INFO - Written chunk : 320000
+[2023-05-12T16:04:34.825+0000] {data_extraction.py:99} INFO - Written chunk : 330000
+[2023-05-12T16:04:34.861+0000] {data_extraction.py:99} INFO - Written chunk : 340000
+[2023-05-12T16:04:34.901+0000] {data_extraction.py:99} INFO - Written chunk : 350000
+[2023-05-12T16:04:34.940+0000] {data_extraction.py:99} INFO - Written chunk : 360000
+[2023-05-12T16:04:34.980+0000] {data_extraction.py:99} INFO - Written chunk : 370000
+[2023-05-12T16:04:35.014+0000] {data_extraction.py:99} INFO - Written chunk : 380000
+[2023-05-12T16:04:35.058+0000] {data_extraction.py:99} INFO - Written chunk : 390000
+[2023-05-12T16:04:35.091+0000] {data_extraction.py:99} INFO - Written chunk : 400000
+[2023-05-12T16:04:35.135+0000] {data_extraction.py:99} INFO - Written chunk : 410000
+[2023-05-12T16:04:35.167+0000] {data_extraction.py:99} INFO - Written chunk : 420000
+[2023-05-12T16:04:35.210+0000] {data_extraction.py:99} INFO - Written chunk : 430000
+[2023-05-12T16:04:35.980+0000] {data_extraction.py:99} INFO - Written chunk : 440000
+[2023-05-12T16:04:36.170+0000] {data_extraction.py:99} INFO - Written chunk : 450000
+[2023-05-12T16:04:36.190+0000] {data_extraction.py:99} INFO - Written chunk : 460000
+[2023-05-12T16:04:36.210+0000] {data_extraction.py:99} INFO - Written chunk : 470000
+[2023-05-12T16:04:36.230+0000] {data_extraction.py:99} INFO - Written chunk : 480000
+[2023-05-12T16:04:36.250+0000] {data_extraction.py:99} INFO - Written chunk : 490000
+[2023-05-12T16:04:36.270+0000] {data_extraction.py:99} INFO - Written chunk : 500000
+[2023-05-12T16:04:36.290+0000] {data_extraction.py:99} INFO - Written chunk : 510000
+[2023-05-12T16:04:36.310+0000] {data_extraction.py:99} INFO - Written chunk : 520000
+[2023-05-12T16:04:36.331+0000] {data_extraction.py:99} INFO - Written chunk : 530000
+[2023-05-12T16:04:36.351+0000] {data_extraction.py:99} INFO - Written chunk : 540000
+[2023-05-12T16:04:36.371+0000] {data_extraction.py:99} INFO - Written chunk : 550000
+[2023-05-12T16:04:36.391+0000] {data_extraction.py:99} INFO - Written chunk : 560000
+[2023-05-12T16:04:36.531+0000] {data_extraction.py:99} INFO - Written chunk : 570000
+[2023-05-12T16:04:36.678+0000] {data_extraction.py:99} INFO - Written chunk : 580000
+[2023-05-12T16:04:36.812+0000] {data_extraction.py:99} INFO - Written chunk : 590000
+[2023-05-12T16:04:36.958+0000] {data_extraction.py:99} INFO - Written chunk : 600000
+[2023-05-12T16:04:37.090+0000] {data_extraction.py:99} INFO - Written chunk : 610000
+[2023-05-12T16:04:37.223+0000] {data_extraction.py:99} INFO - Written chunk : 620000
+[2023-05-12T16:04:37.355+0000] {data_extraction.py:99} INFO - Written chunk : 630000
+[2023-05-12T16:04:37.483+0000] {data_extraction.py:99} INFO - Written chunk : 640000
+[2023-05-12T16:04:37.604+0000] {data_extraction.py:99} INFO - Written chunk : 650000
+[2023-05-12T16:04:37.789+0000] {data_extraction.py:99} INFO - Written chunk : 660000
+[2023-05-12T16:04:37.842+0000] {data_extraction.py:99} INFO - Written chunk : 670000
+[2023-05-12T16:04:37.966+0000] {data_extraction.py:99} INFO - Written chunk : 680000
+[2023-05-12T16:04:38.562+0000] {data_extraction.py:99} INFO - Written chunk : 690000
+[2023-05-12T16:04:38.591+0000] {data_extraction.py:99} INFO - Written chunk : 700000
+[2023-05-12T16:04:38.612+0000] {data_extraction.py:99} INFO - Written chunk : 710000
+[2023-05-12T16:04:38.634+0000] {data_extraction.py:99} INFO - Written chunk : 720000
+[2023-05-12T16:04:38.655+0000] {data_extraction.py:99} INFO - Written chunk : 730000
+[2023-05-12T16:04:38.731+0000] {data_extraction.py:99} INFO - Written chunk : 740000
+[2023-05-12T16:04:38.874+0000] {data_extraction.py:99} INFO - Written chunk : 750000
+[2023-05-12T16:04:39.008+0000] {data_extraction.py:99} INFO - Written chunk : 760000
+[2023-05-12T16:04:39.148+0000] {data_extraction.py:99} INFO - Written chunk : 770000
+[2023-05-12T16:04:39.288+0000] {data_extraction.py:99} INFO - Written chunk : 780000
+[2023-05-12T16:04:39.421+0000] {data_extraction.py:99} INFO - Written chunk : 790000
+[2023-05-12T16:04:39.554+0000] {data_extraction.py:99} INFO - Written chunk : 800000
+[2023-05-12T16:04:39.638+0000] {data_extraction.py:99} INFO - Written chunk : 810000
+[2023-05-12T16:04:39.710+0000] {data_extraction.py:99} INFO - Written chunk : 820000
+[2023-05-12T16:04:39.814+0000] {data_extraction.py:99} INFO - Written chunk : 830000
+[2023-05-12T16:04:39.894+0000] {data_extraction.py:99} INFO - Written chunk : 840000
+[2023-05-12T16:04:40.035+0000] {data_extraction.py:99} INFO - Written chunk : 850000
+[2023-05-12T16:04:40.167+0000] {data_extraction.py:99} INFO - Written chunk : 860000
+[2023-05-12T16:04:40.310+0000] {data_extraction.py:99} INFO - Written chunk : 870000
+[2023-05-12T16:04:40.429+0000] {data_extraction.py:99} INFO - Written chunk : 880000
+[2023-05-12T16:04:40.502+0000] {data_extraction.py:99} INFO - Written chunk : 890000
+[2023-05-12T16:04:40.580+0000] {data_extraction.py:99} INFO - Written chunk : 900000
+[2023-05-12T16:04:40.660+0000] {data_extraction.py:99} INFO - Written chunk : 910000
+[2023-05-12T16:04:40.740+0000] {data_extraction.py:99} INFO - Written chunk : 920000
+[2023-05-12T16:04:40.806+0000] {data_extraction.py:99} INFO - Written chunk : 930000
+[2023-05-12T16:04:40.891+0000] {data_extraction.py:99} INFO - Written chunk : 940000
+[2023-05-12T16:04:40.961+0000] {data_extraction.py:99} INFO - Written chunk : 950000
+[2023-05-12T16:04:41.053+0000] {data_extraction.py:99} INFO - Written chunk : 960000
+[2023-05-12T16:04:41.120+0000] {data_extraction.py:99} INFO - Written chunk : 970000
+[2023-05-12T16:04:41.219+0000] {data_extraction.py:99} INFO - Written chunk : 980000
+[2023-05-12T16:04:41.613+0000] {data_extraction.py:99} INFO - Written chunk : 990000
+[2023-05-12T16:04:41.634+0000] {data_extraction.py:99} INFO - Written chunk : 1000000
+[2023-05-12T16:04:41.656+0000] {data_extraction.py:99} INFO - Written chunk : 1010000
+[2023-05-12T16:04:41.755+0000] {data_extraction.py:99} INFO - Written chunk : 1020000
+[2023-05-12T16:04:41.891+0000] {data_extraction.py:99} INFO - Written chunk : 1030000
+[2023-05-12T16:04:41.991+0000] {data_extraction.py:99} INFO - Written chunk : 1040000
+[2023-05-12T16:04:42.065+0000] {data_extraction.py:99} INFO - Written chunk : 1050000
+[2023-05-12T16:04:42.144+0000] {data_extraction.py:99} INFO - Written chunk : 1060000
+[2023-05-12T16:06:49.633+0000] {data_extraction.py:123} INFO - File successfully unzipped.
+[2023-05-12T16:06:49.771+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-12T16:06:49.788+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=e2e_pipeline, task_id=get_file, execution_date=20230512T160155, start_date=20230512T160207, end_date=20230512T160649
+[2023-05-12T16:06:50.093+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2023-05-12T16:06:50.180+0000] {taskinstance.py:2674} INFO - 1 downstream tasks scheduled from follow-on schedule check
+
+
+					Convert to Parquet logs
+
+
+[2023-05-12T16:07:05.136+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e2e_pipeline.to_parquet manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:07:05.187+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e2e_pipeline.to_parquet manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:07:05.187+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2023-05-12T16:07:05.256+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): to_parquet> on 2023-05-12 16:01:55.297851+00:00
+[2023-05-12T16:07:05.266+0000] {standard_task_runner.py:57} INFO - Started process 176 to run task
+[2023-05-12T16:07:05.270+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'e2e_pipeline', 'to_parquet', 'manual__2023-05-12T16:01:55.297851+00:00', '--job-id', '917', '--raw', '--subdir', 'DAGS_FOLDER/e2e_pipeline.py', '--cfg-path', '/tmp/tmp6vzcpsgg']
+[2023-05-12T16:07:05.273+0000] {standard_task_runner.py:85} INFO - Job 917: Subtask to_parquet
+[2023-05-12T16:07:05.362+0000] {task_command.py:410} INFO - Running <TaskInstance: e2e_pipeline.to_parquet manual__2023-05-12T16:01:55.297851+00:00 [running]> on host deb0f92a226d
+[2023-05-12T16:07:05.536+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='pas' AIRFLOW_CTX_DAG_ID='e2e_pipeline' AIRFLOW_CTX_TASK_ID='to_parquet' AIRFLOW_CTX_EXECUTION_DATE='2023-05-12T16:01:55.297851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-12T16:01:55.297851+00:00'
+[2023-05-12T16:07:05.537+0000] {transform.py:80} INFO - Data Transformation Initiated.
+[2023-05-12T16:07:05.538+0000] {transform.py:81} INFO - Processing stock files.
+[2023-05-12T16:07:05.591+0000] {transform.py:285} INFO - data, already exists.
+[2023-05-12T16:07:05.591+0000] {transform.py:283} INFO - Created directory data/parquet_files.
+[2023-05-12T16:07:05.591+0000] {transform.py:285} INFO - data/parquet_files/, already exists.
+[2023-05-12T16:07:05.591+0000] {transform.py:283} INFO - Created directory data/parquet_files/stocks.
+[2023-05-12T16:07:05.592+0000] {transform.py:285} INFO - data, already exists.
+[2023-05-12T16:07:05.592+0000] {transform.py:285} INFO - data/parquet_files, already exists.
+[2023-05-12T16:07:05.592+0000] {transform.py:285} INFO - data/parquet_files/, already exists.
+[2023-05-12T16:07:05.592+0000] {transform.py:283} INFO - Created directory data/parquet_files/etfs.
+[2023-05-12T16:07:05.592+0000] {transform.py:136} INFO - Received level: transform
+[2023-05-12T16:07:05.596+0000] {transform.py:106} INFO - AMU not in set()
+[2023-05-12T16:07:05.596+0000] {transform.py:86} INFO - Processing file : AMU.csv.
+[2023-05-12T16:07:05.596+0000] {transform.py:176} INFO - Loading data/stocks/AMU.csv
+[2023-05-12T16:07:05.628+0000] {transform.py:180} INFO - Loaded dataframe with shape 1930, 7 for stock/etf symbol : AMU
+[2023-05-12T16:07:05.676+0000] {transform.py:182} INFO - Joining stock/etf AMU to metadata.
+[2023-05-12T16:07:05.752+0000] {transform.py:184} INFO - Merged df shape : 1930, 19
+[2023-05-12T16:07:06.519+0000] {transform.py:90} INFO - Processing etf files.
+[2023-05-12T16:07:06.520+0000] {transform.py:136} INFO - Received level: transform
+[2023-05-12T16:07:06.522+0000] {transform.py:111} INFO - NUSC not in set()
+[2023-05-12T16:07:06.523+0000] {transform.py:92} INFO - Processing file : NUSC.csv.
+[2023-05-12T16:07:06.523+0000] {transform.py:176} INFO - Loading data/etfs/NUSC.csv
+[2023-05-12T16:07:06.547+0000] {transform.py:180} INFO - Loaded dataframe with shape 827, 7 for stock/etf symbol : NUSC
+[2023-05-12T16:07:06.548+0000] {transform.py:182} INFO - Joining stock/etf NUSC to metadata.
+[2023-05-12T16:07:06.562+0000] {transform.py:184} INFO - Merged df shape : 827, 19
+[2023-05-12T16:07:06.576+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-12T16:07:06.596+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=e2e_pipeline, task_id=to_parquet, execution_date=20230512T160155, start_date=20230512T160705, end_date=20230512T160706
+[2023-05-12T16:07:06.687+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2023-05-12T16:07:06.744+0000] {taskinstance.py:2674} INFO - 1 downstream tasks scheduled from follow-on schedule check
+
+
+					Feature Engineering logs
+
+
+[2023-05-12T16:07:09.140+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e2e_pipeline.feature_eng manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:07:09.155+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e2e_pipeline.feature_eng manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:07:09.155+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2023-05-12T16:07:09.189+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): feature_eng> on 2023-05-12 16:01:55.297851+00:00
+[2023-05-12T16:07:09.198+0000] {standard_task_runner.py:57} INFO - Started process 194 to run task
+[2023-05-12T16:07:09.203+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'e2e_pipeline', 'feature_eng', 'manual__2023-05-12T16:01:55.297851+00:00', '--job-id', '918', '--raw', '--subdir', 'DAGS_FOLDER/e2e_pipeline.py', '--cfg-path', '/tmp/tmpnwnl6y8w']
+[2023-05-12T16:07:09.206+0000] {standard_task_runner.py:85} INFO - Job 918: Subtask feature_eng
+[2023-05-12T16:07:09.291+0000] {task_command.py:410} INFO - Running <TaskInstance: e2e_pipeline.feature_eng manual__2023-05-12T16:01:55.297851+00:00 [running]> on host deb0f92a226d
+[2023-05-12T16:07:09.472+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='pas' AIRFLOW_CTX_DAG_ID='e2e_pipeline' AIRFLOW_CTX_TASK_ID='feature_eng' AIRFLOW_CTX_EXECUTION_DATE='2023-05-12T16:01:55.297851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-12T16:01:55.297851+00:00'
+[2023-05-12T16:07:09.473+0000] {feature_eng.py:33} INFO - Running Feature Engineering.
+[2023-05-12T16:07:09.474+0000] {transform.py:285} INFO - data, already exists.
+[2023-05-12T16:07:09.474+0000] {transform.py:285} INFO - data/parquet_files, already exists.
+[2023-05-12T16:07:09.474+0000] {transform.py:283} INFO - Created directory data/parquet_files/feature_eng.
+[2023-05-12T16:07:09.474+0000] {transform.py:285} INFO - data/parquet_files/feature_eng/, already exists.
+[2023-05-12T16:07:09.474+0000] {transform.py:283} INFO - Created directory data/parquet_files/feature_eng/stocks.
+[2023-05-12T16:07:09.475+0000] {transform.py:285} INFO - data, already exists.
+[2023-05-12T16:07:09.475+0000] {transform.py:285} INFO - data/parquet_files, already exists.
+[2023-05-12T16:07:09.475+0000] {transform.py:285} INFO - data/parquet_files/feature_eng, already exists.
+[2023-05-12T16:07:09.475+0000] {transform.py:285} INFO - data/parquet_files/feature_eng/, already exists.
+[2023-05-12T16:07:09.475+0000] {transform.py:283} INFO - Created directory data/parquet_files/feature_eng/etfs.
+[2023-05-12T16:07:09.475+0000] {transform.py:136} INFO - Received level: feature_eng
+[2023-05-12T16:07:09.476+0000] {feature_eng.py:65} INFO - AMU not in set()
+[2023-05-12T16:07:09.476+0000] {feature_eng.py:35} INFO - Processing file : AMU.parquet.gzip.
+[2023-05-12T16:07:09.961+0000] {feature_eng.py:86} INFO - Successfully added vol_moving_avg_col.
+[2023-05-12T16:07:09.965+0000] {feature_eng.py:92} INFO - Successfully added adj_close_rolling_med.
+[2023-05-12T16:07:09.976+0000] {feature_eng.py:37} INFO - Processing etf files.
+[2023-05-12T16:07:09.977+0000] {transform.py:136} INFO - Received level: feature_eng
+[2023-05-12T16:07:09.977+0000] {feature_eng.py:70} INFO - NUSC not in set()
+[2023-05-12T16:07:09.977+0000] {feature_eng.py:39} INFO - Processing file : NUSC.parquet.gzip.
+[2023-05-12T16:07:09.986+0000] {feature_eng.py:86} INFO - Successfully added vol_moving_avg_col.
+[2023-05-12T16:07:09.988+0000] {feature_eng.py:92} INFO - Successfully added adj_close_rolling_med.
+[2023-05-12T16:07:09.996+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-12T16:07:10.010+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=e2e_pipeline, task_id=feature_eng, execution_date=20230512T160155, start_date=20230512T160709, end_date=20230512T160710
+[2023-05-12T16:07:10.095+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2023-05-12T16:07:10.132+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check
+
+
+					ML train logs
+
+
+[2023-05-12T16:07:14.023+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: e2e_pipeline.ml_train manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:07:14.040+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: e2e_pipeline.ml_train manual__2023-05-12T16:01:55.297851+00:00 [queued]>
+[2023-05-12T16:07:14.040+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 1
+[2023-05-12T16:07:14.073+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): ml_train> on 2023-05-12 16:01:55.297851+00:00
+[2023-05-12T16:07:14.083+0000] {standard_task_runner.py:57} INFO - Started process 205 to run task
+[2023-05-12T16:07:14.090+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'e2e_pipeline', 'ml_train', 'manual__2023-05-12T16:01:55.297851+00:00', '--job-id', '919', '--raw', '--subdir', 'DAGS_FOLDER/e2e_pipeline.py', '--cfg-path', '/tmp/tmpo8ixb0dy']
+[2023-05-12T16:07:14.094+0000] {standard_task_runner.py:85} INFO - Job 919: Subtask ml_train
+[2023-05-12T16:07:14.175+0000] {task_command.py:410} INFO - Running <TaskInstance: e2e_pipeline.ml_train manual__2023-05-12T16:01:55.297851+00:00 [running]> on host deb0f92a226d
+[2023-05-12T16:07:14.465+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='pas' AIRFLOW_CTX_DAG_ID='e2e_pipeline' AIRFLOW_CTX_TASK_ID='ml_train' AIRFLOW_CTX_EXECUTION_DATE='2023-05-12T16:01:55.297851+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-12T16:01:55.297851+00:00'
+[2023-05-12T16:07:14.467+0000] {ml_model.py:53} INFO - Machine Learning Model training.
+[2023-05-12T16:07:14.467+0000] {transform.py:285} INFO - data, already exists.
+[2023-05-12T16:07:14.467+0000] {transform.py:283} INFO - Created directory data/models.
+[2023-05-12T16:07:14.468+0000] {transform.py:285} INFO - data/models/, already exists.
+[2023-05-12T16:07:14.468+0000] {transform.py:283} INFO - Created directory data/models/stocks.
+[2023-05-12T16:07:14.468+0000] {transform.py:285} INFO - data, already exists.
+[2023-05-12T16:07:14.468+0000] {transform.py:285} INFO - data/models, already exists.
+[2023-05-12T16:07:14.469+0000] {transform.py:285} INFO - data/models/, already exists.
+[2023-05-12T16:07:14.469+0000] {transform.py:283} INFO - Created directory data/models/etfs.
+[2023-05-12T16:07:14.469+0000] {transform.py:136} INFO - Received level: ml_models
+[2023-05-12T16:07:14.469+0000] {ml_model.py:141} INFO - AMU not in set()
+[2023-05-12T16:07:14.470+0000] {ml_model.py:55} INFO - Processing file : AMU.parquet.gzip.
+[2023-05-12T16:07:14.470+0000] {ml_model.py:97} INFO - Reading parquet file from : data/parquet_files/feature_eng//stocks/AMU.parquet.gzip
+[2023-05-12T16:07:14.571+0000] {ml_model.py:100} INFO - df shape : 1930, 4
+[2023-05-12T16:07:14.573+0000] {ml_model.py:103} INFO - Split data into train and test sets.
+[2023-05-12T16:07:14.574+0000] {ml_model.py:107} INFO - Training XGBoost model
+[2023-05-12T16:07:14.854+0000] {logging_mixin.py:149} INFO - [0]	validation_0-rmse:198696.92181	validation_1-rmse:244144.85421
+[2023-05-12T16:07:14.866+0000] {logging_mixin.py:149} INFO - [1]	validation_0-rmse:166451.60258	validation_1-rmse:227454.87714
+[2023-05-12T16:07:14.874+0000] {logging_mixin.py:149} INFO - [2]	validation_0-rmse:145587.53467	validation_1-rmse:217564.26990
+[2023-05-12T16:07:14.884+0000] {logging_mixin.py:149} INFO - [3]	validation_0-rmse:130907.79351	validation_1-rmse:214391.13936
+[2023-05-12T16:07:14.892+0000] {logging_mixin.py:149} INFO - [4]	validation_0-rmse:121628.39679	validation_1-rmse:212105.66141
+[2023-05-12T16:07:14.901+0000] {logging_mixin.py:149} INFO - [5]	validation_0-rmse:112707.13409	validation_1-rmse:210750.60574
+[2023-05-12T16:07:14.910+0000] {logging_mixin.py:149} INFO - [6]	validation_0-rmse:106619.59114	validation_1-rmse:221145.27273
+[2023-05-12T16:07:14.918+0000] {logging_mixin.py:149} INFO - [7]	validation_0-rmse:102405.19649	validation_1-rmse:220509.56843
+[2023-05-12T16:07:14.926+0000] {logging_mixin.py:149} INFO - [8]	validation_0-rmse:98825.49749	validation_1-rmse:230617.63213
+[2023-05-12T16:07:14.934+0000] {logging_mixin.py:149} INFO - [9]	validation_0-rmse:94758.77996	validation_1-rmse:231378.01683
+[2023-05-12T16:07:14.943+0000] {logging_mixin.py:149} INFO - [10]	validation_0-rmse:89370.72933	validation_1-rmse:232804.42611
+[2023-05-12T16:07:14.951+0000] {logging_mixin.py:149} INFO - [11]	validation_0-rmse:87240.88241	validation_1-rmse:232738.17867
+[2023-05-12T16:07:14.959+0000] {logging_mixin.py:149} INFO - [12]	validation_0-rmse:85646.75676	validation_1-rmse:232879.20598
+[2023-05-12T16:07:14.967+0000] {logging_mixin.py:149} INFO - [13]	validation_0-rmse:84108.12278	validation_1-rmse:241457.49915
+[2023-05-12T16:07:14.975+0000] {logging_mixin.py:149} INFO - [14]	validation_0-rmse:82467.00184	validation_1-rmse:241412.55074
+[2023-05-12T16:07:14.983+0000] {logging_mixin.py:149} INFO - [15]	validation_0-rmse:80877.10262	validation_1-rmse:240493.99070
+[2023-05-12T16:07:14.991+0000] {logging_mixin.py:149} INFO - [16]	validation_0-rmse:79342.15224	validation_1-rmse:240528.79308
+[2023-05-12T16:07:14.999+0000] {logging_mixin.py:149} INFO - [17]	validation_0-rmse:78084.53135	validation_1-rmse:240514.14217
+[2023-05-12T16:07:15.007+0000] {logging_mixin.py:149} INFO - [18]	validation_0-rmse:77355.43907	validation_1-rmse:240429.95334
+[2023-05-12T16:07:15.015+0000] {logging_mixin.py:149} INFO - [19]	validation_0-rmse:76124.03341	validation_1-rmse:242641.02370
+[2023-05-12T16:07:15.023+0000] {logging_mixin.py:149} INFO - [20]	validation_0-rmse:74854.80878	validation_1-rmse:249067.16944
+[2023-05-12T16:07:15.030+0000] {logging_mixin.py:149} INFO - [21]	validation_0-rmse:74148.46935	validation_1-rmse:249061.33902
+[2023-05-12T16:07:15.038+0000] {logging_mixin.py:149} INFO - [22]	validation_0-rmse:72950.59844	validation_1-rmse:255646.30196
+[2023-05-12T16:07:15.046+0000] {logging_mixin.py:149} INFO - [23]	validation_0-rmse:71613.41420	validation_1-rmse:255115.46863
+[2023-05-12T16:07:15.054+0000] {logging_mixin.py:149} INFO - [24]	validation_0-rmse:70462.80174	validation_1-rmse:256909.24524
+[2023-05-12T16:07:15.062+0000] {logging_mixin.py:149} INFO - [25]	validation_0-rmse:69109.49106	validation_1-rmse:262828.59579
+[2023-05-12T16:07:15.070+0000] {logging_mixin.py:149} INFO - [26]	validation_0-rmse:68666.83183	validation_1-rmse:262823.11916
+[2023-05-12T16:07:15.078+0000] {logging_mixin.py:149} INFO - [27]	validation_0-rmse:67404.36660	validation_1-rmse:262812.04793
+[2023-05-12T16:07:15.093+0000] {logging_mixin.py:149} INFO - [28]	validation_0-rmse:66600.68690	validation_1-rmse:262829.89782
+[2023-05-12T16:07:15.101+0000] {logging_mixin.py:149} INFO - [29]	validation_0-rmse:66253.74361	validation_1-rmse:262824.81119
+[2023-05-12T16:07:15.110+0000] {logging_mixin.py:149} INFO - [30]	validation_0-rmse:65910.55859	validation_1-rmse:262834.13951
+[2023-05-12T16:07:15.118+0000] {logging_mixin.py:149} INFO - [31]	validation_0-rmse:65115.89183	validation_1-rmse:262989.15245
+[2023-05-12T16:07:15.126+0000] {logging_mixin.py:149} INFO - [32]	validation_0-rmse:64064.19341	validation_1-rmse:263433.40019
+[2023-05-12T16:07:15.138+0000] {logging_mixin.py:149} INFO - [33]	validation_0-rmse:62904.55640	validation_1-rmse:264574.54711
+[2023-05-12T16:07:15.146+0000] {logging_mixin.py:149} INFO - [34]	validation_0-rmse:62168.65803	validation_1-rmse:264565.65313
+[2023-05-12T16:07:15.154+0000] {logging_mixin.py:149} INFO - [35]	validation_0-rmse:61968.93824	validation_1-rmse:264559.22654
+[2023-05-12T16:07:15.162+0000] {logging_mixin.py:149} INFO - [36]	validation_0-rmse:60952.02309	validation_1-rmse:269365.82826
+[2023-05-12T16:07:15.170+0000] {logging_mixin.py:149} INFO - [37]	validation_0-rmse:60651.24715	validation_1-rmse:269362.91622
+[2023-05-12T16:07:15.178+0000] {logging_mixin.py:149} INFO - [38]	validation_0-rmse:59518.37449	validation_1-rmse:269347.98378
+[2023-05-12T16:07:15.186+0000] {logging_mixin.py:149} INFO - [39]	validation_0-rmse:59323.23235	validation_1-rmse:269334.34532
+[2023-05-12T16:07:15.194+0000] {logging_mixin.py:149} INFO - [40]	validation_0-rmse:58354.61784	validation_1-rmse:269337.82752
+[2023-05-12T16:07:15.202+0000] {logging_mixin.py:149} INFO - [41]	validation_0-rmse:57378.44883	validation_1-rmse:269345.40305
+[2023-05-12T16:07:15.210+0000] {logging_mixin.py:149} INFO - [42]	validation_0-rmse:56366.55349	validation_1-rmse:269468.59050
+[2023-05-12T16:07:15.219+0000] {logging_mixin.py:149} INFO - [43]	validation_0-rmse:55748.58167	validation_1-rmse:269468.36075
+[2023-05-12T16:07:15.227+0000] {logging_mixin.py:149} INFO - [44]	validation_0-rmse:55224.36572	validation_1-rmse:272917.69657
+[2023-05-12T16:07:15.235+0000] {logging_mixin.py:149} INFO - [45]	validation_0-rmse:54742.59335	validation_1-rmse:273089.37140
+[2023-05-12T16:07:15.243+0000] {logging_mixin.py:149} INFO - [46]	validation_0-rmse:54564.69014	validation_1-rmse:273086.51673
+[2023-05-12T16:07:15.251+0000] {logging_mixin.py:149} INFO - [47]	validation_0-rmse:53977.51696	validation_1-rmse:273074.60428
+[2023-05-12T16:07:15.259+0000] {logging_mixin.py:149} INFO - [48]	validation_0-rmse:53333.53893	validation_1-rmse:273055.48601
+[2023-05-12T16:07:15.267+0000] {logging_mixin.py:149} INFO - [49]	validation_0-rmse:52934.65884	validation_1-rmse:273067.11737
+[2023-05-12T16:07:15.324+0000] {logging_mixin.py:149} INFO - [50]	validation_0-rmse:52668.18093	validation_1-rmse:273063.94375
+[2023-05-12T16:07:15.357+0000] {logging_mixin.py:149} INFO - [51]	validation_0-rmse:52290.82043	validation_1-rmse:273773.35016
+[2023-05-12T16:07:15.373+0000] {logging_mixin.py:149} INFO - [52]	validation_0-rmse:51960.16324	validation_1-rmse:273773.03299
+[2023-05-12T16:07:15.387+0000] {logging_mixin.py:149} INFO - [53]	validation_0-rmse:51676.12738	validation_1-rmse:273768.41587
+[2023-05-12T16:07:15.402+0000] {logging_mixin.py:149} INFO - [54]	validation_0-rmse:51015.63411	validation_1-rmse:273447.15935
+[2023-05-12T16:07:15.410+0000] {logging_mixin.py:149} INFO - [55]	validation_0-rmse:50223.74869	validation_1-rmse:272906.54412
+[2023-05-12T16:07:15.418+0000] {logging_mixin.py:149} INFO - [56]	validation_0-rmse:49855.11963	validation_1-rmse:275391.17665
+[2023-05-12T16:07:15.426+0000] {logging_mixin.py:149} INFO - [57]	validation_0-rmse:49759.35860	validation_1-rmse:276581.87324
+[2023-05-12T16:07:15.434+0000] {logging_mixin.py:149} INFO - [58]	validation_0-rmse:49262.55720	validation_1-rmse:276284.95519
+[2023-05-12T16:07:15.442+0000] {logging_mixin.py:149} INFO - [59]	validation_0-rmse:49173.68374	validation_1-rmse:276282.70037
+[2023-05-12T16:07:15.450+0000] {logging_mixin.py:149} INFO - [60]	validation_0-rmse:48952.26281	validation_1-rmse:276283.35345
+[2023-05-12T16:07:15.458+0000] {logging_mixin.py:149} INFO - [61]	validation_0-rmse:48488.33720	validation_1-rmse:276287.07070
+[2023-05-12T16:07:15.466+0000] {logging_mixin.py:149} INFO - [62]	validation_0-rmse:48170.88422	validation_1-rmse:276288.57649
+[2023-05-12T16:07:15.474+0000] {logging_mixin.py:149} INFO - [63]	validation_0-rmse:47588.25106	validation_1-rmse:277082.66957
+[2023-05-12T16:07:15.482+0000] {logging_mixin.py:149} INFO - [64]	validation_0-rmse:47203.17437	validation_1-rmse:277287.66205
+[2023-05-12T16:07:15.491+0000] {logging_mixin.py:149} INFO - [65]	validation_0-rmse:46787.42401	validation_1-rmse:277309.67331
+[2023-05-12T16:07:15.499+0000] {logging_mixin.py:149} INFO - [66]	validation_0-rmse:45691.91552	validation_1-rmse:277290.88981
+[2023-05-12T16:07:15.507+0000] {logging_mixin.py:149} INFO - [67]	validation_0-rmse:45505.18842	validation_1-rmse:277295.14329
+[2023-05-12T16:07:15.515+0000] {logging_mixin.py:149} INFO - [68]	validation_0-rmse:44632.26005	validation_1-rmse:277287.34844
+[2023-05-12T16:07:15.523+0000] {logging_mixin.py:149} INFO - [69]	validation_0-rmse:44421.20093	validation_1-rmse:277279.54902
+[2023-05-12T16:07:15.531+0000] {logging_mixin.py:149} INFO - [70]	validation_0-rmse:43751.93234	validation_1-rmse:276875.06851
+[2023-05-12T16:07:15.539+0000] {logging_mixin.py:149} INFO - [71]	validation_0-rmse:43500.90655	validation_1-rmse:277063.37993
+[2023-05-12T16:07:15.547+0000] {logging_mixin.py:149} INFO - [72]	validation_0-rmse:43420.96258	validation_1-rmse:277054.15515
+[2023-05-12T16:07:15.555+0000] {logging_mixin.py:149} INFO - [73]	validation_0-rmse:42953.02273	validation_1-rmse:277064.24483
+[2023-05-12T16:07:15.563+0000] {logging_mixin.py:149} INFO - [74]	validation_0-rmse:42831.80163	validation_1-rmse:277060.95075
+[2023-05-12T16:07:15.571+0000] {logging_mixin.py:149} INFO - [75]	validation_0-rmse:42326.25295	validation_1-rmse:277058.97177
+[2023-05-12T16:07:15.579+0000] {logging_mixin.py:149} INFO - [76]	validation_0-rmse:42034.42514	validation_1-rmse:276570.51145
+[2023-05-12T16:07:15.587+0000] {logging_mixin.py:149} INFO - [77]	validation_0-rmse:41343.14867	validation_1-rmse:276558.56924
+[2023-05-12T16:07:15.595+0000] {logging_mixin.py:149} INFO - [78]	validation_0-rmse:40551.96062	validation_1-rmse:276659.46371
+[2023-05-12T16:07:15.603+0000] {logging_mixin.py:149} INFO - [79]	validation_0-rmse:40347.76215	validation_1-rmse:276658.67544
+[2023-05-12T16:07:15.611+0000] {logging_mixin.py:149} INFO - [80]	validation_0-rmse:39885.92417	validation_1-rmse:276626.07110
+[2023-05-12T16:07:15.619+0000] {logging_mixin.py:149} INFO - [81]	validation_0-rmse:39738.18025	validation_1-rmse:276620.80350
+[2023-05-12T16:07:15.627+0000] {logging_mixin.py:149} INFO - [82]	validation_0-rmse:39621.07110	validation_1-rmse:278743.77624
+[2023-05-12T16:07:15.635+0000] {logging_mixin.py:149} INFO - [83]	validation_0-rmse:39234.47371	validation_1-rmse:278746.35017
+[2023-05-12T16:07:15.643+0000] {logging_mixin.py:149} INFO - [84]	validation_0-rmse:39171.78938	validation_1-rmse:278741.06306
+[2023-05-12T16:07:15.651+0000] {logging_mixin.py:149} INFO - [85]	validation_0-rmse:38426.90366	validation_1-rmse:278744.62109
+[2023-05-12T16:07:15.659+0000] {logging_mixin.py:149} INFO - [86]	validation_0-rmse:37944.44452	validation_1-rmse:278779.26419
+[2023-05-12T16:07:15.667+0000] {logging_mixin.py:149} INFO - [87]	validation_0-rmse:37485.17944	validation_1-rmse:278780.79748
+[2023-05-12T16:07:15.675+0000] {logging_mixin.py:149} INFO - [88]	validation_0-rmse:37179.46314	validation_1-rmse:278760.99835
+[2023-05-12T16:07:15.683+0000] {logging_mixin.py:149} INFO - [89]	validation_0-rmse:37000.42438	validation_1-rmse:278761.23714
+[2023-05-12T16:07:15.691+0000] {logging_mixin.py:149} INFO - [90]	validation_0-rmse:36649.05435	validation_1-rmse:279792.84215
+[2023-05-12T16:07:15.712+0000] {logging_mixin.py:149} INFO - [91]	validation_0-rmse:36054.27751	validation_1-rmse:279889.63765
+[2023-05-12T16:07:15.722+0000] {logging_mixin.py:149} INFO - [92]	validation_0-rmse:35530.09201	validation_1-rmse:279958.39368
+[2023-05-12T16:07:15.730+0000] {logging_mixin.py:149} INFO - [93]	validation_0-rmse:35412.61949	validation_1-rmse:279951.12251
+[2023-05-12T16:07:15.738+0000] {logging_mixin.py:149} INFO - [94]	validation_0-rmse:35392.05522	validation_1-rmse:279949.44745
+[2023-05-12T16:07:15.746+0000] {logging_mixin.py:149} INFO - [95]	validation_0-rmse:35256.36934	validation_1-rmse:279948.44913
+[2023-05-12T16:07:15.754+0000] {logging_mixin.py:149} INFO - [96]	validation_0-rmse:34687.53052	validation_1-rmse:279963.12439
+[2023-05-12T16:07:15.762+0000] {logging_mixin.py:149} INFO - [97]	validation_0-rmse:34507.58682	validation_1-rmse:281185.00619
+[2023-05-12T16:07:15.770+0000] {logging_mixin.py:149} INFO - [98]	validation_0-rmse:34285.51473	validation_1-rmse:281004.44013
+[2023-05-12T16:07:15.779+0000] {logging_mixin.py:149} INFO - [99]	validation_0-rmse:33673.67458	validation_1-rmse:281036.36965
+[2023-05-12T16:07:15.787+0000] {logging_mixin.py:149} INFO - [100]	validation_0-rmse:33601.37843	validation_1-rmse:281034.40848
+[2023-05-12T16:07:15.795+0000] {logging_mixin.py:149} INFO - [101]	validation_0-rmse:33444.98003	validation_1-rmse:281199.07452
+[2023-05-12T16:07:15.803+0000] {logging_mixin.py:149} INFO - [102]	validation_0-rmse:33108.34201	validation_1-rmse:281196.98007
+[2023-05-12T16:07:15.814+0000] {logging_mixin.py:149} INFO - [103]	validation_0-rmse:32874.11825	validation_1-rmse:281494.01512
+[2023-05-12T16:07:15.842+0000] {logging_mixin.py:149} INFO - [104]	validation_0-rmse:32779.88433	validation_1-rmse:281493.14461
+[2023-05-12T16:07:15.850+0000] {logging_mixin.py:149} INFO - [105]	validation_0-rmse:32470.59991	validation_1-rmse:281327.60463
+[2023-05-12T16:07:15.865+0000] {ml_model.py:118} INFO - Model saved to data/models//stocks/AMU.pkl
+[2023-05-12T16:07:15.866+0000] {ml_model.py:65} INFO - Processing etf files.
+[2023-05-12T16:07:15.866+0000] {transform.py:136} INFO - Received level: ml_models
+[2023-05-12T16:07:15.867+0000] {ml_model.py:146} INFO - NUSC not in set()
+[2023-05-12T16:07:15.867+0000] {ml_model.py:67} INFO - Processing file : NUSC.parquet.gzip.
+[2023-05-12T16:07:15.867+0000] {ml_model.py:97} INFO - Reading parquet file from : data/parquet_files/feature_eng//etfs/NUSC.parquet.gzip
+[2023-05-12T16:07:15.874+0000] {ml_model.py:100} INFO - df shape : 827, 4
+[2023-05-12T16:07:15.876+0000] {ml_model.py:103} INFO - Split data into train and test sets.
+[2023-05-12T16:07:15.876+0000] {ml_model.py:107} INFO - Training XGBoost model
+[2023-05-12T16:07:15.899+0000] {logging_mixin.py:149} INFO - [0]	validation_0-rmse:38369.36702	validation_1-rmse:73579.86910
+[2023-05-12T16:07:15.907+0000] {logging_mixin.py:149} INFO - [1]	validation_0-rmse:32672.27282	validation_1-rmse:73196.77499
+[2023-05-12T16:07:15.922+0000] {logging_mixin.py:149} INFO - [2]	validation_0-rmse:28062.79833	validation_1-rmse:76111.58167
+[2023-05-12T16:07:15.930+0000] {logging_mixin.py:149} INFO - [3]	validation_0-rmse:24238.41402	validation_1-rmse:80467.23543
+[2023-05-12T16:07:15.937+0000] {logging_mixin.py:149} INFO - [4]	validation_0-rmse:21100.77222	validation_1-rmse:85393.48935
+[2023-05-12T16:07:15.944+0000] {logging_mixin.py:149} INFO - [5]	validation_0-rmse:18542.67873	validation_1-rmse:90636.52591
+[2023-05-12T16:07:15.951+0000] {logging_mixin.py:149} INFO - [6]	validation_0-rmse:16430.51482	validation_1-rmse:95275.37096
+[2023-05-12T16:07:15.959+0000] {logging_mixin.py:149} INFO - [7]	validation_0-rmse:14685.90700	validation_1-rmse:99685.54874
+[2023-05-12T16:07:15.966+0000] {logging_mixin.py:149} INFO - [8]	validation_0-rmse:13299.57410	validation_1-rmse:103640.07507
+[2023-05-12T16:07:15.973+0000] {logging_mixin.py:149} INFO - [9]	validation_0-rmse:12115.90592	validation_1-rmse:107009.91021
+[2023-05-12T16:07:15.980+0000] {logging_mixin.py:149} INFO - [10]	validation_0-rmse:11140.84714	validation_1-rmse:109962.15353
+[2023-05-12T16:07:15.987+0000] {logging_mixin.py:149} INFO - [11]	validation_0-rmse:10368.89626	validation_1-rmse:112608.13167
+[2023-05-12T16:07:15.995+0000] {logging_mixin.py:149} INFO - [12]	validation_0-rmse:9778.81922	validation_1-rmse:114886.27002
+[2023-05-12T16:07:16.002+0000] {logging_mixin.py:149} INFO - [13]	validation_0-rmse:9115.55164	validation_1-rmse:114823.02290
+[2023-05-12T16:07:16.009+0000] {logging_mixin.py:149} INFO - [14]	validation_0-rmse:8585.56200	validation_1-rmse:114819.34358
+[2023-05-12T16:07:16.016+0000] {logging_mixin.py:149} INFO - [15]	validation_0-rmse:8112.22730	validation_1-rmse:114791.45800
+[2023-05-12T16:07:16.023+0000] {logging_mixin.py:149} INFO - [16]	validation_0-rmse:7833.19825	validation_1-rmse:116018.79905
+[2023-05-12T16:07:16.031+0000] {logging_mixin.py:149} INFO - [17]	validation_0-rmse:7641.05371	validation_1-rmse:116070.43896
+[2023-05-12T16:07:16.038+0000] {logging_mixin.py:149} INFO - [18]	validation_0-rmse:7464.74249	validation_1-rmse:116984.89722
+[2023-05-12T16:07:16.045+0000] {logging_mixin.py:149} INFO - [19]	validation_0-rmse:7191.07104	validation_1-rmse:117107.10064
+[2023-05-12T16:07:16.054+0000] {logging_mixin.py:149} INFO - [20]	validation_0-rmse:7016.76702	validation_1-rmse:117865.83858
+[2023-05-12T16:07:16.061+0000] {logging_mixin.py:149} INFO - [21]	validation_0-rmse:6788.11307	validation_1-rmse:118522.04454
+[2023-05-12T16:07:16.068+0000] {logging_mixin.py:149} INFO - [22]	validation_0-rmse:6634.35385	validation_1-rmse:118501.36417
+[2023-05-12T16:07:16.076+0000] {logging_mixin.py:149} INFO - [23]	validation_0-rmse:6542.07047	validation_1-rmse:118998.37486
+[2023-05-12T16:07:16.083+0000] {logging_mixin.py:149} INFO - [24]	validation_0-rmse:6201.15236	validation_1-rmse:118999.14925
+[2023-05-12T16:07:16.094+0000] {logging_mixin.py:149} INFO - [25]	validation_0-rmse:6083.89181	validation_1-rmse:119476.32644
+[2023-05-12T16:07:16.101+0000] {logging_mixin.py:149} INFO - [26]	validation_0-rmse:6039.65738	validation_1-rmse:119889.32985
+[2023-05-12T16:07:16.109+0000] {logging_mixin.py:149} INFO - [27]	validation_0-rmse:5938.76278	validation_1-rmse:119903.20091
+[2023-05-12T16:07:16.116+0000] {logging_mixin.py:149} INFO - [28]	validation_0-rmse:5851.69323	validation_1-rmse:119846.21482
+[2023-05-12T16:07:16.123+0000] {logging_mixin.py:149} INFO - [29]	validation_0-rmse:5634.02209	validation_1-rmse:119848.31084
+[2023-05-12T16:07:16.131+0000] {logging_mixin.py:149} INFO - [30]	validation_0-rmse:5530.80897	validation_1-rmse:119852.25819
+[2023-05-12T16:07:16.138+0000] {logging_mixin.py:149} INFO - [31]	validation_0-rmse:5464.64931	validation_1-rmse:119808.66771
+[2023-05-12T16:07:16.145+0000] {logging_mixin.py:149} INFO - [32]	validation_0-rmse:5365.93240	validation_1-rmse:119893.79399
+[2023-05-12T16:07:16.152+0000] {logging_mixin.py:149} INFO - [33]	validation_0-rmse:5147.03114	validation_1-rmse:119801.34828
+[2023-05-12T16:07:16.160+0000] {logging_mixin.py:149} INFO - [34]	validation_0-rmse:5080.49059	validation_1-rmse:119879.91958
+[2023-05-12T16:07:16.167+0000] {logging_mixin.py:149} INFO - [35]	validation_0-rmse:5042.88547	validation_1-rmse:119908.88860
+[2023-05-12T16:07:16.174+0000] {logging_mixin.py:149} INFO - [36]	validation_0-rmse:4959.11950	validation_1-rmse:119864.36053
+[2023-05-12T16:07:16.181+0000] {logging_mixin.py:149} INFO - [37]	validation_0-rmse:4832.00023	validation_1-rmse:119866.57790
+[2023-05-12T16:07:16.189+0000] {logging_mixin.py:149} INFO - [38]	validation_0-rmse:4700.31326	validation_1-rmse:119868.32517
+[2023-05-12T16:07:16.196+0000] {logging_mixin.py:149} INFO - [39]	validation_0-rmse:4608.91247	validation_1-rmse:119831.39566
+[2023-05-12T16:07:16.203+0000] {logging_mixin.py:149} INFO - [40]	validation_0-rmse:4545.56781	validation_1-rmse:119847.37524
+[2023-05-12T16:07:16.210+0000] {logging_mixin.py:149} INFO - [41]	validation_0-rmse:4502.76883	validation_1-rmse:119834.03055
+[2023-05-12T16:07:16.218+0000] {logging_mixin.py:149} INFO - [42]	validation_0-rmse:4472.56884	validation_1-rmse:119803.25264
+[2023-05-12T16:07:16.225+0000] {logging_mixin.py:149} INFO - [43]	validation_0-rmse:4459.09096	validation_1-rmse:119808.51281
+[2023-05-12T16:07:16.232+0000] {logging_mixin.py:149} INFO - [44]	validation_0-rmse:4399.56109	validation_1-rmse:119706.60778
+[2023-05-12T16:07:16.239+0000] {logging_mixin.py:149} INFO - [45]	validation_0-rmse:4312.43795	validation_1-rmse:119640.61241
+[2023-05-12T16:07:16.246+0000] {logging_mixin.py:149} INFO - [46]	validation_0-rmse:4264.47697	validation_1-rmse:119648.57840
+[2023-05-12T16:07:16.253+0000] {logging_mixin.py:149} INFO - [47]	validation_0-rmse:4198.40019	validation_1-rmse:119933.07166
+[2023-05-12T16:07:16.260+0000] {logging_mixin.py:149} INFO - [48]	validation_0-rmse:4060.33300	validation_1-rmse:119933.33620
+[2023-05-12T16:07:16.268+0000] {logging_mixin.py:149} INFO - [49]	validation_0-rmse:3908.75404	validation_1-rmse:119943.41998
+[2023-05-12T16:07:16.275+0000] {logging_mixin.py:149} INFO - [50]	validation_0-rmse:3873.74347	validation_1-rmse:120198.73638
+[2023-05-12T16:07:16.282+0000] {logging_mixin.py:149} INFO - [51]	validation_0-rmse:3822.48194	validation_1-rmse:120180.33214
+[2023-05-12T16:07:16.294+0000] {logging_mixin.py:149} INFO - [52]	validation_0-rmse:3775.26947	validation_1-rmse:120191.75210
+[2023-05-12T16:07:16.304+0000] {logging_mixin.py:149} INFO - [53]	validation_0-rmse:3741.32940	validation_1-rmse:120166.27733
+[2023-05-12T16:07:16.311+0000] {logging_mixin.py:149} INFO - [54]	validation_0-rmse:3725.24358	validation_1-rmse:120356.25905
+[2023-05-12T16:07:16.319+0000] {logging_mixin.py:149} INFO - [55]	validation_0-rmse:3633.95360	validation_1-rmse:120361.84029
+[2023-05-12T16:07:16.326+0000] {logging_mixin.py:149} INFO - [56]	validation_0-rmse:3595.79928	validation_1-rmse:120284.57917
+[2023-05-12T16:07:16.333+0000] {logging_mixin.py:149} INFO - [57]	validation_0-rmse:3417.09178	validation_1-rmse:120291.00723
+[2023-05-12T16:07:16.345+0000] {logging_mixin.py:149} INFO - [58]	validation_0-rmse:3353.19060	validation_1-rmse:120284.75514
+[2023-05-12T16:07:16.353+0000] {logging_mixin.py:149} INFO - [59]	validation_0-rmse:3275.70835	validation_1-rmse:120284.99007
+[2023-05-12T16:07:16.362+0000] {logging_mixin.py:149} INFO - [60]	validation_0-rmse:3215.00767	validation_1-rmse:120280.05980
+[2023-05-12T16:07:16.370+0000] {logging_mixin.py:149} INFO - [61]	validation_0-rmse:3199.17265	validation_1-rmse:120285.11578
+[2023-05-12T16:07:16.377+0000] {logging_mixin.py:149} INFO - [62]	validation_0-rmse:3171.71682	validation_1-rmse:120264.37588
+[2023-05-12T16:07:16.384+0000] {logging_mixin.py:149} INFO - [63]	validation_0-rmse:3164.92539	validation_1-rmse:120307.05522
+[2023-05-12T16:07:16.391+0000] {logging_mixin.py:149} INFO - [64]	validation_0-rmse:3142.29427	validation_1-rmse:120339.32486
+[2023-05-12T16:07:16.399+0000] {logging_mixin.py:149} INFO - [65]	validation_0-rmse:3086.17167	validation_1-rmse:120339.30702
+[2023-05-12T16:07:16.449+0000] {logging_mixin.py:149} INFO - [66]	validation_0-rmse:3000.65723	validation_1-rmse:120339.65403
+[2023-05-12T16:07:16.464+0000] {logging_mixin.py:149} INFO - [67]	validation_0-rmse:2925.28771	validation_1-rmse:120341.70315
+[2023-05-12T16:07:16.479+0000] {logging_mixin.py:149} INFO - [68]	validation_0-rmse:2884.20603	validation_1-rmse:120341.72804
+[2023-05-12T16:07:16.502+0000] {logging_mixin.py:149} INFO - [69]	validation_0-rmse:2860.56769	validation_1-rmse:120318.74133
+[2023-05-12T16:07:16.509+0000] {logging_mixin.py:149} INFO - [70]	validation_0-rmse:2846.23973	validation_1-rmse:120451.57536
+[2023-05-12T16:07:16.516+0000] {logging_mixin.py:149} INFO - [71]	validation_0-rmse:2773.74506	validation_1-rmse:120450.13067
+[2023-05-12T16:07:16.524+0000] {logging_mixin.py:149} INFO - [72]	validation_0-rmse:2756.85360	validation_1-rmse:120434.83052
+[2023-05-12T16:07:16.531+0000] {logging_mixin.py:149} INFO - [73]	validation_0-rmse:2681.77694	validation_1-rmse:120430.82988
+[2023-05-12T16:07:16.538+0000] {logging_mixin.py:149} INFO - [74]	validation_0-rmse:2654.41900	validation_1-rmse:120410.43799
+[2023-05-12T16:07:16.545+0000] {logging_mixin.py:149} INFO - [75]	validation_0-rmse:2635.07701	validation_1-rmse:120411.52925
+[2023-05-12T16:07:16.552+0000] {logging_mixin.py:149} INFO - [76]	validation_0-rmse:2579.00499	validation_1-rmse:120398.04971
+[2023-05-12T16:07:16.559+0000] {logging_mixin.py:149} INFO - [77]	validation_0-rmse:2534.08877	validation_1-rmse:120369.11215
+[2023-05-12T16:07:16.566+0000] {logging_mixin.py:149} INFO - [78]	validation_0-rmse:2486.01932	validation_1-rmse:120371.45378
+[2023-05-12T16:07:16.573+0000] {logging_mixin.py:149} INFO - [79]	validation_0-rmse:2444.26631	validation_1-rmse:120371.94769
+[2023-05-12T16:07:16.581+0000] {logging_mixin.py:149} INFO - [80]	validation_0-rmse:2391.53961	validation_1-rmse:120358.21713
+[2023-05-12T16:07:16.588+0000] {logging_mixin.py:149} INFO - [81]	validation_0-rmse:2349.71375	validation_1-rmse:120342.70974
+[2023-05-12T16:07:16.595+0000] {logging_mixin.py:149} INFO - [82]	validation_0-rmse:2315.36522	validation_1-rmse:120339.06040
+[2023-05-12T16:07:16.602+0000] {logging_mixin.py:149} INFO - [83]	validation_0-rmse:2290.66347	validation_1-rmse:120345.79067
+[2023-05-12T16:07:16.609+0000] {logging_mixin.py:149} INFO - [84]	validation_0-rmse:2253.34005	validation_1-rmse:120346.14498
+[2023-05-12T16:07:16.616+0000] {logging_mixin.py:149} INFO - [85]	validation_0-rmse:2235.01026	validation_1-rmse:120347.94755
+[2023-05-12T16:07:16.623+0000] {logging_mixin.py:149} INFO - [86]	validation_0-rmse:2206.27464	validation_1-rmse:120348.01552
+[2023-05-12T16:07:16.630+0000] {logging_mixin.py:149} INFO - [87]	validation_0-rmse:2197.38052	validation_1-rmse:120351.41155
+[2023-05-12T16:07:16.638+0000] {logging_mixin.py:149} INFO - [88]	validation_0-rmse:2186.04381	validation_1-rmse:120336.84210
+[2023-05-12T16:07:16.644+0000] {logging_mixin.py:149} INFO - [89]	validation_0-rmse:2180.26091	validation_1-rmse:120358.41858
+[2023-05-12T16:07:16.652+0000] {logging_mixin.py:149} INFO - [90]	validation_0-rmse:2138.04558	validation_1-rmse:120358.60973
+[2023-05-12T16:07:16.659+0000] {logging_mixin.py:149} INFO - [91]	validation_0-rmse:2106.58918	validation_1-rmse:120337.31762
+[2023-05-12T16:07:16.666+0000] {logging_mixin.py:149} INFO - [92]	validation_0-rmse:2088.57545	validation_1-rmse:120337.65794
+[2023-05-12T16:07:16.673+0000] {logging_mixin.py:149} INFO - [93]	validation_0-rmse:2064.36524	validation_1-rmse:120337.45116
+[2023-05-12T16:07:16.680+0000] {logging_mixin.py:149} INFO - [94]	validation_0-rmse:2044.24095	validation_1-rmse:120337.83494
+[2023-05-12T16:07:16.687+0000] {logging_mixin.py:149} INFO - [95]	validation_0-rmse:2017.11691	validation_1-rmse:120338.85281
+[2023-05-12T16:07:16.694+0000] {logging_mixin.py:149} INFO - [96]	validation_0-rmse:1995.43754	validation_1-rmse:120338.93051
+[2023-05-12T16:07:16.701+0000] {logging_mixin.py:149} INFO - [97]	validation_0-rmse:1977.17475	validation_1-rmse:120339.05446
+[2023-05-12T16:07:16.709+0000] {logging_mixin.py:149} INFO - [98]	validation_0-rmse:1950.43711	validation_1-rmse:120334.77747
+[2023-05-12T16:07:16.716+0000] {logging_mixin.py:149} INFO - [99]	validation_0-rmse:1910.72227	validation_1-rmse:120335.64875
+[2023-05-12T16:07:16.723+0000] {logging_mixin.py:149} INFO - [100]	validation_0-rmse:1902.95706	validation_1-rmse:120336.31151
+[2023-05-12T16:07:16.731+0000] {logging_mixin.py:149} INFO - [101]	validation_0-rmse:1893.23616	validation_1-rmse:120300.26891
+[2023-05-12T16:07:16.744+0000] {ml_model.py:118} INFO - Model saved to data/models//etfs/NUSC.pkl
+[2023-05-12T16:07:16.745+0000] {ml_model.py:84} INFO - Failed to train a model for the following files : 
+[2023-05-12T16:07:16.746+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-12T16:07:16.759+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=e2e_pipeline, task_id=ml_train, execution_date=20230512T160155, start_date=20230512T160714, end_date=20230512T160716
+[2023-05-12T16:07:16.833+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2023-05-12T16:07:16.869+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check

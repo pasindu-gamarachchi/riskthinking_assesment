@@ -3,7 +3,7 @@ import os
 import requests
 import csv
 import zipfile
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class DataExtraction:
@@ -81,7 +81,7 @@ class DataExtraction:
         output_file = os.getenv("OUTPUT_FILE_PATH", f"{csv_data_dir}/{zipfile_name}")
         time_stamp = self.get_timestamp()
         CSV_URL = f'https://storage.googleapis.com/kaggle-data-sets/541298/1054465/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20230511%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date={time_stamp}&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=2118dfd23e6c04b7b072234588133a99f26872cca976f55d98d6973d5a08bd615040c02dddb490d8a722481cebe0ad029869a58fff941c47d5e2f7501c65577aca6690cd4e3e77d591b78008422cd07d357429a83a57e8967efbc6e58169e6c610c064504e70438599c842909c61901ea989a6b5e6b6542a5d4c8c2716fe375e4b112a891a534f44f4af8d2df3d9b519847bb34a37776e5e36bf0cccaec620ae3a01ee2910d1fa2d1c05122024d3d733fd48e9d9def00104f52faa6402ea530027eb88495538aab424927a3a76fbd919cf7f9451d58844ea7cbcf67b7174e013575191e0f475986e4d57544792eec169c0f20ac27353febb6ad1bd6ffa0b274e'
-
+        CSV_URL = f"https://storage.googleapis.com/kaggle-data-sets/541298/1054465/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20230512%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20230512T151129Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=aab8186bd8441d440179998004d4c56d3a790a43151327c0c3e46ef3efc802bb26627f7f85d796b4b5e8244433d4b0b339ed938f942d02637bb2ff7f4dd9fc0068342b39d6dac48d20bb0d56717dd143f8872308ac1a07e5bad43a923d9f0bc072fcbb0d5c0a7e91d2f71e9b271e765dea70f1c14d58d3ab9ff28d697b6e89ce0bd4e92e4b5d847aa15da4716b4a18ee2d70ad0e9880ffe93b154b31c0eeb18eac69ea383ed60f2ee08b6029607d16ad4887949600af5f70d6c592dd721de33491b3fc2535c8b5ce39097bef59aaf865e5dcc4888e1d101c1091303f9810e78fa1e26c71cc299c09ec3a1ba0702512af3f51dd9d2d118245595515f2de0a9d27"
         if zipfile_name in os.listdir(csv_data_dir):
             logging.info("File has already been downloaded, skipping download.")
         else:

@@ -77,6 +77,7 @@ class Transform:
             logging.error(f"Failed to load metadata with {err}.")
 
     def run(self):
+        logging.info("Data Transformation Initiated.")
         logging.info("Processing stock files.")
         is_process_all_files = os.getenv("IS_RUN_ALL_FILES", "False")
         is_process_all_files = is_process_all_files.lower() in ("true")
@@ -178,6 +179,7 @@ class Transform:
         stocksymb = stocksymb.split('/')[-1]
         logging.info(f"Loaded dataframe with shape {df.shape[0]}, {df.shape[1]} for stock/etf symbol : {stocksymb}")
         df = self.__add_stock_etf_symbol(df, stocksymb)
+        logging.info(f"Joining stock/etf {stocksymb} to metadata.")
         merged_df = df.join(self.meta_data.set_index('Symbol'), on='Symbol', how='left')
         logging.info(f"Merged df shape : {merged_df.shape[0]}, {merged_df.shape[1]}")
         if typ == 'stock':

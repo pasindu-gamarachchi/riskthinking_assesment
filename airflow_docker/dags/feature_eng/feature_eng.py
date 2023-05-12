@@ -83,11 +83,13 @@ class FeatureEng(Transform):
         df.sort_values(by=['Date'], ascending=[True], inplace=True)
         try:
             df['vol_moving_avg'] = df['Volume'].rolling(window=30).mean()
+            logging.info("Successfully added vol_moving_avg_col.")
         except Exception as err:
             logging.error(f"Failed to add volume moving average with {err}.")
 
         try:
             df['adj_close_rolling_med'] = df['Close'].rolling(window=30).median()
+            logging.info("Successfully added adj_close_rolling_med.")
         except Exception as err:
             logging.error(f"Failed to add rolling median with {err}.")
 

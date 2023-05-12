@@ -163,5 +163,8 @@ cython_debug/
 *.log
 *.csv
 *.gzip
+!combined_logs.log
+airflow_docker/e2e_log_file/gen_combined_log.sh
+
 
 .idea/
